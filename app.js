@@ -8,7 +8,7 @@ const path=require('path');
 const app=express();
 app.set('view engine','ejs');
 
-mongoose.connect('mongodb+srv://Admin-Kushal:Kushal135@cluster0.dqqgwzf.mongodb.net/portfolio',{useNewUrlParser:true});
+mongoose.connect({mongoUrl},{useNewUrlParser:true});
 
 const futureClientSchema=new mongoose.Schema({
     name:String,
