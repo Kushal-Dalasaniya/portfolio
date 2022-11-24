@@ -1029,6 +1029,12 @@ footer .social-media{
   
   .circle{width: 0;}
 
+  footer .container{
+    display: grid;
+    justify-content: center;
+  }
+  
+
 }
 
 
