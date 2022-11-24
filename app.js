@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose=require('mongoose');
@@ -8,7 +10,7 @@ const path=require('path');
 const app=express();
 app.set('view engine','ejs');
 
-mongoose.connect('mongodb+srv://Admin-Kushal:Kushal135@cluster0.dqqgwzf.mongodb.net/portfolio',{useNewUrlParser:true});
+mongoose.connect(process.env.DB_URL,{useNewUrlParser:true});
 
 const futureClientSchema=new mongoose.Schema({
     name:String,
@@ -33,8 +35,8 @@ app.post("/portfolio-Kushal",function(req,res){
         projectDetail:req.body.projectDetail
     });
     obj.save();
-    console.log(obj);
-    console.log(req.body.projectDetail);
+    // console.log(obj);
+    // console.log(req.body.projectDetail);
     res.redirect("/portfolio-Kushal");
 }) 
 
@@ -45,7 +47,7 @@ app.post("/Newsletter",function(req,res){
         projectDetail:"want to update about Kushal's Project"
     });
     obj.save();
-    console.log(obj);
+    // console.log(obj);
     res.redirect("/portfolio-Kushal");
 }) 
 
