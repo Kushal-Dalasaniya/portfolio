@@ -37,7 +37,7 @@ app.post("/portfolio-Kushal",function(req,res){
     obj.save();
     // console.log(obj);
     // console.log(req.body.projectDetail);
-    res.redirect("/portfolio-Kushal");
+    res.redirect("/");
 }) 
 
 app.post("/Newsletter",function(req,res){
@@ -48,11 +48,11 @@ app.post("/Newsletter",function(req,res){
     });
     obj.save();
     // console.log(obj);
-    res.redirect("/portfolio-Kushal");
+    res.redirect("/");
 }) 
 
 app.listen(process.env.PORT||4000, function() {
-    console.log("Server started on port"+process.env.PORT);
+    console.log("Server started on port "+process.env.PORT);
 });
 
 
