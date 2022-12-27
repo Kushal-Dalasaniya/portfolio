@@ -10,7 +10,18 @@ const path=require('path');
 const app=express();
 app.set('view engine','ejs');
 
-mongoose.connect(process.env.DB_URL,{useNewUrlParser:true});
+// mongoose.connect(process.env.DB_URL,{useNewUrlParser:true});
+
+// When we use cyclic, we must first establish a mogodb connection before port listening.
+const connectDB = async () => {
+    try {
+      const conn = await mongoose.connect(process.env.DB_URL,{useNewUrlParser:true});
+      console.log(`MongoDB Connected: ${conn.connection.host}`);
+    } catch (error) {
+      console.log(error);
+      process.exit(1);
+    }
+}
 
 const futureClientSchema=new mongoose.Schema({
     name:String,
@@ -51,10 +62,16 @@ app.post("/Newsletter",function(req,res){
     res.redirect("/");
 }) 
 
-app.listen(process.env.PORT||4000, function() {
-    console.log("Server started on port "+process.env.PORT);
-});
+// app.listen(process.env.PORT||4000, function() {
+//     console.log("Server started on port "+process.env.PORT);
+// });
 
+// When we use cyclic, we must first establish a mogodb connection before port listening.
+connectDB().then(() => {
+    app.listen(process.env.PORT||3000, function() {
+      console.log("Server started on port "+process.env.PORT);
+    });
+})
 
 
 
