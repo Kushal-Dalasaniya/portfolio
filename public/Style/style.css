@@ -17,6 +17,7 @@ body{
   --bg-color-transparent:rgba(255,255,255,0.6);
   --heading-color:hsl(var(--hue-1),61%,24%);
   --text-color:hsl(var(--hue-1),17%,63%);
+  --backGroundImage : url("https://www.transparenttextures.com/patterns/diagonales-decalees.png");
 }
 
 body.dark{
@@ -27,6 +28,7 @@ body.dark{
   --bg-color-transparent:hsla(var(--hue-1),23%,19%,0.6);
   --heading-color:hsl(var(--hue-1),100%,95%);
   --text-color:hsl(var(--hue-1),14%,51%);
+  --backGroundImage:url("https://www.transparenttextures.com/patterns/stardust.png");
 }
 
 body.dark .st1{
@@ -63,6 +65,7 @@ body{
   background-color: var(--bg-color);
   font-family: "Popping",sans-serif;
   transition: 0.5s background-color;
+  background-image: var( --backGroundImage);
 }
 
 ::selection{

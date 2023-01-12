@@ -7,7 +7,6 @@ const progress_bars=document.querySelectorAll(".skill svg circle");
 const links=document.querySelectorAll(".nav-link");
 
 const toggle_btn=document.querySelector(".toggle-btn");
-console.log(toggle_btn);
 
 window.addEventListener("scroll",()=>{
   if(!skillsPlayed) skillsCounter();
@@ -97,11 +96,10 @@ function activeLink(){
       }).filter((srt) => srt.y <= 0);
 
   let currSectionId=passedSections.at(-1).id;
-
-  console.log(currSectionId);
   
   links.forEach((i)=>i.classList.remove("active-link"));
-  links[currSectionId].classList.add("active-link");
+  if(links[currSectionId])
+    links[currSectionId].classList.add("active-link");
 }
 
 
@@ -115,7 +113,6 @@ let firstTheme=localStorage.getItem("dark");
 changeTheme(+firstTheme);
 
 function changeTheme(isDark){
-  console.log("click");
   if(isDark){
     document.body.classList.add("dark");
     toggle_btn.classList.replace("uil-moonset","uil-sunset");
@@ -129,10 +126,35 @@ function changeTheme(isDark){
 }
 
 toggle_btn.addEventListener('click',()=>{
-  console.log("click");
   changeTheme(!document.body.classList.contains("dark"));
 });
 
 // toggle_btn.addEventListener("click",function(){
 //   console.log("clicked");
 // })
+
+// -----------------main heding chang------------------------------------------------
+
+function one() {
+  three("Full-Stack Developer");
+  setTimeout(two, 6000);
+}
+
+function two() {
+  three("Blockchain Developer");
+  setTimeout(one, 6000);
+}
+
+async function three(heding){
+  document.querySelector("#mainHeading").innerHTML=heding.charAt(0);
+    
+  for(var i=1;i<heding.length;i++){
+    temp = document.querySelector("#mainHeading").innerHTML;
+    temp = temp + heding.charAt(i);
+    await new Promise(resolve => setTimeout(resolve, 160));
+    
+    document.querySelector("#mainHeading").innerHTML=temp;
+  }
+}
+
+one();
