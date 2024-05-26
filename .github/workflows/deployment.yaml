@@ -3,7 +3,7 @@ name: Deploy to AWS CodeDeploy
 on:
   push:
     branches:
-      - feature/pipline
+      - master
 
 jobs:
   deploy:
