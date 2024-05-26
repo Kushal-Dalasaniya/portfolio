@@ -6,7 +6,7 @@ files:
 hooks:
   AfterInstall:
     - location: restart_server.sh
-      runas: root
+      runas: ubuntu
 
 
       
