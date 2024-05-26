@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/portfolio
+    destination: /home/ubuntu/portfolio/
 hooks:
   AfterInstall:
     - location: restart_server.sh
